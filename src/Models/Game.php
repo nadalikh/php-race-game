@@ -11,6 +11,10 @@ class Game
     private $consoleHandler, $players = [], $db, $totalLength;
     const NUMBER_OF_PLAYERS = 2;
 
+    /**
+     * @return void
+     * Handle the logic of choosing each player's vehicle
+     */
     private function playerStarter(){
         $vehicleName = $this->consoleHandler->showOptions();
         $vehicle = $this->db->findWithName($vehicleName);
@@ -32,12 +36,21 @@ class Game
         $this->consoleHandler = new ConsoleHelper($this->db);
     }
 
+    /**
+     * @return void
+     * The starter method which start the game
+     */
     public function startGame(){
         for ($i = 0; $i<self::NUMBER_OF_PLAYERS; $i++)
             $this->playerStarter();
         $this->totalLength=
             $this->consoleHandler->getInput("enter the total length of the race in Km: ");
     }
+
+    /**
+     * @return void
+     * Calculate the Players race time with them vehicle
+     */
 
     public function calculatePlayersTime(){
         foreach ($this->players as $player) {
@@ -49,15 +62,28 @@ class Game
         }
     }
 
+    /**
+     * @return void
+     * This method is used to log the palyers.
+     */
     public function watchPlayers(){
         foreach ($this->players as $player)
             var_dump($player);
     }
 
+    /**
+     * @return void
+     * Shows all players race time.
+     */
     public function watchPlayerRaceTime(){
         foreach ($this->players as $player)
             $this->consoleHandler->output(strval($player->getRaceTime()) . " minutes");
     }
+
+    /**
+     * @return void
+     * Handle the finding winner logic.
+     */
     public function findWinner() {
         $maxRaceTime = PHP_INT_MAX;
         $winnerPlayer = "";

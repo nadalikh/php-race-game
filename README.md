@@ -1,3 +1,10 @@
+## To GET IN THE GAME, DO THESE TWO STEPS
+<h2>step 1:</h2>
+run : `compser install`
+<h2>step 2:</h2>
+run : `php starter.php`
+
+
 ## Project Challenge: CLI-Based Two-Player Vehicle Racing Game in PHP
 
 **Project Brief**:  

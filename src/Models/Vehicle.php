@@ -5,6 +5,9 @@ interface Unit{
     public function calculateRaceTime($totalLength, $maxSpeed):float;
 }
 
+/**
+ * This class calculate the race time with knot and kts unit
+ */
 class Unit_knot implements Unit{
 
     public function calculateRaceTime($totalLength, $maxSpeed): float
@@ -14,7 +17,9 @@ class Unit_knot implements Unit{
     }
 }
 
-
+/**
+ * This class calculate the race time with KpH unit.
+ */
 class Unit_KPH implements  Unit{
 
     public function calculateRaceTime($totalLength, $maxSpeed): float
@@ -23,7 +28,9 @@ class Unit_KPH implements  Unit{
     }
 }
 
-
+/**
+ * The vehicle class has unit property which handle composition over inheritance
+ */
 class Vehicle
 {
     public $name, $maxSpeed, $unit;
