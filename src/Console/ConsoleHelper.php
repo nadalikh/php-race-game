@@ -14,8 +14,8 @@ class ConsoleHelper
         $this->instance = new In();
         $this->db = $db;
     }
-    public function showOptions($playerNumber){
-        $choices = $this->instance->choices('Player '. $playerNumber, $this->db->options, [1]);
+    public function showOptions(){
+        $choices = $this->instance->choices('Player ' . Player::$id , $this->db->options, [1]);
         $choices = \array_map(function ($c)
         {
             return $this->db->options[$c];
@@ -27,6 +27,9 @@ class ConsoleHelper
 
     public function getInput($message){
         return $this->instance->prompt($message, rand(1, 100));
+    }
+    public function output($message){
+        $this->instance->greenBold($message, true);
     }
 
 }
